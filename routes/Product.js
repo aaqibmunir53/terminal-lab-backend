@@ -7,6 +7,10 @@ router.get("/showProducts", async function (req, res) {
   res.json(products);
 });
 
+router.get("/", function (req, res) {
+  res.render("create", { title: "Node JS CRUD App" });
+});
+
 router.post("/store", async function (req, res) {
   let product = new Product();
   product.prCategory = req.body.prCategory;
@@ -14,7 +18,8 @@ router.post("/store", async function (req, res) {
   product.prPrice = req.body.prPrice;
   product.prDetails = req.body.prDetails;
   await product.save();
-  res.json(product);
+  console.log(product);
+  res.redirect("/");
 });
 
 module.exports = router;

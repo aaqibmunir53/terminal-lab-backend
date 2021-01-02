@@ -4,8 +4,11 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+
 var router = require("./routes/Product");
+var cors = require("cors");
 var app = express();
+app.use(cors);
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
@@ -16,30 +19,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// Add headers
-app.use(function (req, res, next) {
-  // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  // Request methods you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, OPTIONS, PUT, PATCH, DELETE"
-  );
-
-  // Request headers you wish to allow
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With,content-type"
-  );
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader("Access-Control-Allow-Credentials", true);
-
-  // Pass to next layer of middleware
-  next();
-});
 app.use("/", router);
 
 // catch 404 and forward to error handler
@@ -60,7 +39,7 @@ app.use(function (err, req, res, next) {
 
 mongoose
   .connect(
-    "mongodb+srv://imantanveer:mamalove@cluster0.7otkr.mongodb.net/terminal?retryWrites=true&w=majority",
+    "mongodb+srv://umar:25121998@cluster0.7otkr.mongodb.net/terminal?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
