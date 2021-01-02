@@ -60,7 +60,7 @@ app.use(function (err, req, res, next) {
 
 mongoose
   .connect(
-    "mongodb+srv://umar:25121998@cluster0.7otkr.mongodb.net/terminal?retryWrites=true&w=majority",
+    "mongodb+srv://imantanveer:mamalove@cluster0.7otkr.mongodb.net/terminal?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
